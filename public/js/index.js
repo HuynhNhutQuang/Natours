@@ -2,7 +2,7 @@ import '@babel/polyfill';
 import { login, logout } from './login';
 import { displayMap } from './mapbox';
 import { updateSetting } from './updateSetting';
-
+import { bookingTour } from './stripe';
 const Mapbox = document.getElementById('map');
 if (Mapbox) {
   const locations = JSON.parse(Mapbox.dataset.locations);
@@ -49,5 +49,13 @@ if (sendPassword) {
     document.getElementById('password').value = '';
     document.getElementById('password-confirm').value = '';
     text.textContent = 'save password';
+  });
+}
+const bookingBtn = document.getElementById('bookingBtn');
+if (bookingBtn) {
+  bookingBtn.addEventListener('click', (e) => {
+    e.target.textContent = 'Processing......';
+    const { tourId } = e.target.dataset;
+    bookingTour(tourId);
   });
 }
