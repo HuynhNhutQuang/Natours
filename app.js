@@ -134,12 +134,11 @@ app.use((req, res, next) => {
 });
 app.use('/api', limiter);
 // ROUTES
-
 app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
-// app.use('/booking', bookingRouter);
+app.use('/booking', bookingRouter);
 app.all('*', (req, res, next) => {
   next(new appError(`Can't find ${req.originalUrl} link`, 404));
 });

@@ -9,15 +9,16 @@ module.exports = class Email {
     this.from = `Huynh Nhut Quang <${process.env.EMAIL_FROM}>`;
   }
   newTransport() {
-    // if (process.env.NODE_ENV.trim() === 'production') {
-    //   return nodemailer.createTransport({
-    //     service: 'SendGrid',
-    //     auth: {
-    //       user: '',
-    //       pass: '',
-    //     },
-    //   });
-    // }
+    if (process.env.NODE_ENV.trim() === 'production') {
+      return nodemailer.createTransport({
+        service: 'gmail',
+        secure: true,
+        auth: {
+          user: process.env.GMAIL_USER,
+          pass: process.env.GMAIL_PASS,
+        },
+      });
+    }
     return nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: process.env.EMAIL_PORT,
