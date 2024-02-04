@@ -5,9 +5,7 @@ const stripe = Stripe(
 );
 export const bookingTour = async (tourId) => {
   try {
-    const session = await axios(
-      `http://127.0.0.1:3000/booking/checkout-session/${tourId}`
-    );
+    const session = await axios(`/booking/checkout-session/${tourId}`);
     await stripe.redirectToCheckout({ sessionId: session.data.session.id });
   } catch (err) {
     showAlert('error', err);

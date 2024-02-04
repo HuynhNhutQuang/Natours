@@ -129,10 +129,10 @@ tourSchema.pre(/^find/, function (next) {
   });
   next();
 });
-tourSchema.post(/^find/, function (docs, next) {
-  console.log(`function find takes ${Date.now() - this.start} milliseconds`);
-  next();
-});
+// tourSchema.post(/^find/, function (docs, next) {
+//   console.log(`function find takes ${Date.now() - this.start} milliseconds`);
+//   next();
+// });
 // Aggregation middleware
 // tourSchema.pre('aggregate', function (next) {
 //   this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });

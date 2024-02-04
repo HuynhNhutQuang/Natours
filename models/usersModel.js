@@ -77,14 +77,14 @@ userSchema.methods.changePasswordAfter = function (JWTTimestamp) {
       this.passwordChangeAt.getTime() / 1000,
       10
     );
-    console.log(changedTimestamp, JWTTimestamp);
+    // console.log(changedTimestamp, JWTTimestamp);
     return JWTTimestamp < changedTimestamp;
   }
   return false;
 };
 userSchema.methods.createPasswordResetToken = function () {
   const resetToken = crypto.randomBytes(32).toString('hex');
-  console.log({ resetToken });
+  // console.log({ resetToken });
   this.passwordResetToken = crypto
     .createHash('sha256')
     .update(resetToken)
