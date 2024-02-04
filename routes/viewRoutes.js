@@ -8,7 +8,7 @@ router.route('/my-tour').get(authController.protect, viewController.getMyTour);
 router
   .route('/')
   .get(
-    bookingController.createBooking,
+    bookingController.createCheckoutBooking,
     authController.isLoggedIn,
     viewController.getOverview
   );
